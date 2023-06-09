@@ -43,11 +43,15 @@ jobs:
           [ErrorModeHelper]::SetErrorMode($ErrorMode)
 
           # Install meson and ninja
-          pip install meson
+          # pip install meson
           pip install ninja
 
+          git clone https://github.com/kasper93/meson.git -b py
+          $p = Resolve-Path meson
+          $env:PYTHONPATH += ";$p"
+
           # See where things are comming from
-          (Get-Command meson).Path
+          # (Get-Command meson).Path
           (Get-Command ninja).Path
           (Get-Command gcc).Path
           (Get-Command python).Path
@@ -56,4 +60,4 @@ jobs:
           cd project
           python -m mesonbuild.mesonmain setup _build
           cd _build
-          ninja
+          ninja --verbose
