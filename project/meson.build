@@ -6,7 +6,7 @@ project('project', 'c', 'cpp',
   ]
 )
 
-foreach i : range(200)
+foreach i : range(1000)
     lib = shared_library('my-shared-lib'+i.to_string(),
                          'my-shared-lib.c')
     exec = executable('my-executable'+i.to_string(),
