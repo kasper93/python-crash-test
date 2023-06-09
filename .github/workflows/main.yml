@@ -54,6 +54,6 @@ jobs:
 
           # Build the meson project
           cd project
-          meson setup _build
+          python -m mesonbuild.mesonmain setup _build
           cd _build
           ninja
